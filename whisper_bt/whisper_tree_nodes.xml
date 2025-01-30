@@ -1,0 +1,11 @@
+<root>
+    <TreeNodesModel>
+        <!-- ############################### ACTION NODES ################################# -->
+        <Action ID="STT">
+            <input_port name="prompt">Prompt</input_port>
+            <input_port name="grammar_config">Grammar config</input_port>
+            <output_port name="transcription">Transcription</output_port>
+        </Action>
+    </TreeNodesModel>
+</root>
+
