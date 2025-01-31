@@ -1,4 +1,4 @@
-# Test for the generate stt action
+# Test for the stt action
 ament_add_gtest(test_stt_action
   test_stt_action.cpp
 )
