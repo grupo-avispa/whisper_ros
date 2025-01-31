@@ -198,10 +198,8 @@ TEST_F(STTActionTestFixture, test_tick)
   EXPECT_EQ(tree_->rootNode()->status(), BT::NodeStatus::SUCCESS);
 
   // Check if the output is correct
-  auto transcription = config_->blackboard->get<whisper_msgs::msg::Transcription>("transcription");
-  EXPECT_EQ(transcription.text, "This is a test transcription");
-  EXPECT_EQ(transcription.audio_time, 0.0);
-  EXPECT_EQ(transcription.transcription_time, 0.0);
+  auto transcription = config_->blackboard->get<std::string>("transcription");
+  EXPECT_EQ(transcription, "This is a test transcription");
 }
 
 int main(int argc, char ** argv)
