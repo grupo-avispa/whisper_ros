@@ -42,7 +42,7 @@ void STTAction::on_tick()
 
 BT::NodeStatus STTAction::on_success()
 {
-  setOutput("transcription", result_.result->transcription);
+  setOutput("transcription", result_.result->transcription.text);
   return BT::NodeStatus::SUCCESS;
 }
 

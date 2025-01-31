@@ -67,7 +67,7 @@ public:
       {
         BT::InputPort<std::string>("prompt", "Prompt"),
         BT::InputPort<whisper_msgs::msg::GrammarConfig>("grammar_config", "Grammar config"),
-        BT::OutputPort<whisper_msgs::msg::Transcription>("transcription", "Transcription")
+        BT::OutputPort<std::string>("transcription", "Transcription"),
       });
   }
 };
