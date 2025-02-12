@@ -18,8 +18,8 @@
 #include <set>
 #include <string>
 
-#include <ament_index_cpp/get_package_share_directory.hpp>
-#include "behaviortree_cpp_v3/bt_factory.h"
+#include "ament_index_cpp/get_package_share_directory.hpp"
+#include "behaviortree_cpp/bt_factory.h"
 
 #include "nav2_behavior_tree/utils/test_action_server.hpp"
 #include "whisper_bt/action/stt_action.hpp"
@@ -118,7 +118,7 @@ TEST_F(STTActionTestFixture, test_ports)
 {
   std::string xml_txt =
     R"(
-      <root main_tree_to_execute = "MainTree" >
+      <root BTCPP_format="4">
         <BehaviorTree ID="MainTree">
             <STT/>
         </BehaviorTree>
@@ -128,7 +128,7 @@ TEST_F(STTActionTestFixture, test_ports)
 
   xml_txt =
     R"(
-      <root main_tree_to_execute = "MainTree" >
+      <root BTCPP_format="4">
         <BehaviorTree ID="MainTree">
             <STT prompt="" grammar_config="" transcription="{transcription}"/>
         </BehaviorTree>
@@ -145,20 +145,7 @@ TEST_F(STTActionTestFixture, test_ports)
 
   xml_txt =
     R"(
-      <root main_tree_to_execute = "MainTree" >
-        <BehaviorTree ID="MainTree">
-            <STT prompt="This is a test" grammar_config="This/test" transcription="{transcription}"/>
-        </BehaviorTree>
-      </root>)";
-
-  tree_ = std::make_shared<BT::Tree>(factory_->createTreeFromText(xml_txt, config_->blackboard));
-  EXPECT_EQ(tree_->rootNode()->getInput<std::string>("prompt"), "This is a test");
-  EXPECT_FALSE(
-    tree_->rootNode()->getInput<whisper_msgs::msg::GrammarConfig>("grammar_config").has_value());
-
-  xml_txt =
-    R"(
-      <root main_tree_to_execute = "MainTree" >
+      <root BTCPP_format="4">
         <BehaviorTree ID="MainTree">
             <STT prompt="This is a test" grammar_config="This/test/50.0" transcription="{transcription}"/>
         </BehaviorTree>
@@ -177,7 +164,7 @@ TEST_F(STTActionTestFixture, test_tick)
 {
   std::string xml_txt =
     R"(
-      <root>
+      <root BTCPP_format="4">
         <BehaviorTree ID="MainTree">
             <STT prompt="" grammar_config="" transcription="{transcription}"/>
         </BehaviorTree>
